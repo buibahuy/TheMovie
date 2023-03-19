@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">themovie</string>
+    <string name="txt_err_expired_login">Phiên đăng nhập đã hết hạn</string>
+    <string name="txt_error_login_fail">Tài khoản hoặc mật khẩu không phù hợp!!!</string>
+</resources>
