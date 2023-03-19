@@ -10,7 +10,7 @@ class M003DetailMovieVM : BaseViewModel() {
 
     fun getDetailMovie(id: Int) {
         getAPI().getDetailMovie(id)
-            .enqueue(initHandleResponse(M003DetailMovieVM.KEY_GET_DETAIL_MOVIE))
+            .enqueue(initHandleResponse(KEY_GET_DETAIL_MOVIE))
     }
 
 
