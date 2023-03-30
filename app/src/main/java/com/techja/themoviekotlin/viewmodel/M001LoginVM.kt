@@ -3,7 +3,7 @@ package com.techja.themoviekotlin.viewmodel
 import android.util.Log
 import com.techja.themoviekotlin.api.req.AccountReq
 import com.techja.themoviekotlin.api.req.RequestTokenReq
-import com.techja.themoviekotlin.api.res.AuthenRes
+import com.techja.themoviekotlin.api.res.model.AuthenRes
 
 open class M001LoginVM : BaseViewModel() {
     companion object {

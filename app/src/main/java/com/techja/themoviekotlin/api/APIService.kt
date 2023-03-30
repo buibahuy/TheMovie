@@ -2,14 +2,14 @@ package com.techja.themoviekotlin.api
 
 import com.techja.themoviekotlin.api.req.AccountReq
 import com.techja.themoviekotlin.api.req.RequestTokenReq
-import com.techja.themoviekotlin.api.res.AuthenRes
-import com.techja.themoviekotlin.api.res.DetailMovie
-import com.techja.themoviekotlin.api.res.MovieRes
-import com.techja.themoviekotlin.api.res.SessionRes
+import com.techja.themoviekotlin.api.res.model.AuthenRes
+import com.techja.themoviekotlin.api.res.model.DetailMovie
+import com.techja.themoviekotlin.api.res.model.MovieRes
+import com.techja.themoviekotlin.api.res.model.SessionRes
 import retrofit2.Call
 import retrofit2.http.*
 
-interface API {
+interface APIService {
     companion object {
         const val API_KEY = "fd99ca113db9db767e7710795700c3af"
     }

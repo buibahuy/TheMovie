@@ -3,8 +3,8 @@ package com.techja.themoviekotlin.view.fragment
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.techja.themoviekotlin.api.res.DetailMovie
-import com.techja.themoviekotlin.api.res.MovieRes
+import com.techja.themoviekotlin.api.res.model.DetailMovie
+import com.techja.themoviekotlin.api.res.model.MovieRes
 import com.techja.themoviekotlin.databinding.M003DetailMovieFrgBinding
 import com.techja.themoviekotlin.viewmodel.M003DetailMovieVM
 
@@ -16,6 +16,29 @@ class M003DetailMovieFrg : BaseFragment<M003DetailMovieFrgBinding, M003DetailMov
 
     override fun initViews() {
         val item: MovieRes.Result = mData as MovieRes.Result
+
+        binding.apply {
+            actionBar.icBack.setOnClickListener {
+                callBack.backToPrevious()
+            }
+
+            icAddToList.setOnClickListener {
+                viewModel.addToList()
+            }
+
+            icFavorite.setOnClickListener {
+                viewModel.favoriteMovie()
+            }
+
+            icAddToWatchList.setOnClickListener {
+                viewModel.addToWatchList()
+            }
+
+            icFavorite.setOnClickListener {
+                viewModel.rateMovie()
+            }
+        }
+
         viewModel.getDetailMovie(item.id!!)
     }
 

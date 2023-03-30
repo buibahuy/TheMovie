@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.techja.themoviekotlin.CommonUtils
 import com.techja.themoviekotlin.R
-import com.techja.themoviekotlin.api.res.SessionRes
+import com.techja.themoviekotlin.api.res.model.SessionRes
 import com.techja.themoviekotlin.databinding.M001LoginFrgBinding
 import com.techja.themoviekotlin.viewmodel.M001LoginVM
 
