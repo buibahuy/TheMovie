@@ -3,7 +3,7 @@ package com.techja.themoviekotlin.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.techja.themoviekotlin.OnAPICallBack
-import com.techja.themoviekotlin.api.API
+import com.techja.themoviekotlin.api.APIService
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -25,13 +25,13 @@ abstract class BaseViewModel : ViewModel() {
         this.callBack = callBack
     }
 
-    protected fun getAPI(): API {
+    protected fun getAPI(): APIService {
         val rs = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(OkHttpClient.Builder().callTimeout(30, TimeUnit.SECONDS).build())
             .build()
-        return rs.create(API::class.java)
+        return rs.create(APIService::class.java)
     }
 
     protected fun <T> initHandleResponse(key: String): Callback<T> {

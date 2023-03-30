@@ -2,9 +2,8 @@ package com.techja.themoviekotlin.view.fragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.techja.themoviekotlin.api.res.MovieRes
+import com.techja.themoviekotlin.api.res.model.MovieRes
 import com.techja.themoviekotlin.databinding.M002ListMovieFrgBinding
 import com.techja.themoviekotlin.view.adapter.MovieAdapter
 import com.techja.themoviekotlin.viewmodel.M002ListMovieVM
@@ -34,9 +33,9 @@ class M002ListMovieFrg : BaseFragment<M002ListMovieFrgBinding, M002ListMovieVM>(
         viewModel.addToResultList(movieRes.results!!)
         mAdapter = MovieAdapter(viewModel.getResultList(), mContext)
         binding.rvListMovie.adapter = mAdapter
-        mAdapter.getItemResult().observe(this, {
+        mAdapter.getItemResult().observe(this) {
             handleItemResult(it)
-        })
+        }
         mAdapter.updateListResult(viewModel.getResultList())
 
     }

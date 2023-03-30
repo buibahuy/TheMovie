@@ -1,4 +1,4 @@
-package com.techja.themoviekotlin.api.res
+package com.techja.themoviekotlin.api.res.model
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

@@ -5,18 +5,30 @@
     android:layout_width="match_parent"
     android:orientation="horizontal"
     android:layout_height="56dp">
-<ImageView
-    android:layout_width="56dp"
-    android:padding="15dp"
-    android:src="@drawable/ic_menu"
-    android:background="@color/purple_700"
-    android:layout_height="56dp"
-    tools:ignore="ContentDescription"
-    app:tint="@color/white" />
+
+    <ImageView
+        android:id="@+id/icBack"
+        android:layout_width="56dp"
+        android:padding="15dp"
+        android:src="@drawable/ic_back"
+        android:background="@color/purple_700"
+        android:layout_height="56dp"
+        tools:ignore="ContentDescription"
+        app:tint="@color/white" />
+
     <ImageView
         android:src="@drawable/ic_logo"
         android:background="@color/purple_700"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="56dp"
         tools:ignore="ContentDescription" />
+    <ImageView
+        android:layout_width="56dp"
+        android:padding="15dp"
+        android:src="@drawable/ic_menu"
+        android:background="@color/purple_700"
+        android:layout_height="56dp"
+        tools:ignore="ContentDescription"
+        app:tint="@color/white" />
 </LinearLayout>

@@ -12,7 +12,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.techja.themoviekotlin.R
-import com.techja.themoviekotlin.api.res.MovieRes
+import com.techja.themoviekotlin.api.res.model.MovieRes
 
 class MovieAdapter(private var listResult: List<MovieRes.Result>, private val context: Context) :
     RecyclerView.Adapter<MovieAdapter.MovieHolder>() {

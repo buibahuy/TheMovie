@@ -1,6 +1,6 @@
 package com.techja.themoviekotlin.viewmodel
 
-import com.techja.themoviekotlin.api.res.MovieRes
+import com.techja.themoviekotlin.api.res.model.MovieRes
 
 class M002ListMovieVM : BaseViewModel() {
 
