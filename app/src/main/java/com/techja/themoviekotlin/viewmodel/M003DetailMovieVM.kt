@@ -1,6 +1,11 @@
 package com.techja.themoviekotlin.viewmodel
 
-class M003DetailMovieVM : BaseViewModel() {
+import com.techja.themoviekotlin.api.APIHelper
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+
+@HiltViewModel
+class M003DetailMovieVM @Inject constructor(private val apiHelper: APIHelper) : BaseViewModel() {
 
     companion object {
         val TAG: String = M003DetailMovieVM::class.java.name
@@ -19,12 +24,9 @@ class M003DetailMovieVM : BaseViewModel() {
 
 
     fun getDetailMovie(id: Int) {
-        getAPI().getDetailMovie(id)
+        apiHelper.getDetailMovie(id)
             .enqueue(initHandleResponse(KEY_GET_DETAIL_MOVIE))
     }
-
-
-
 
     fun rateMovie(){
 

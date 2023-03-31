@@ -8,7 +8,9 @@ import com.techja.themoviekotlin.CommonUtils
 import com.techja.themoviekotlin.databinding.M000SplashFrgBinding
 import com.techja.themoviekotlin.view.fragment.M001LoginFrg.Companion.KEY_SESSION_ID
 import com.techja.themoviekotlin.viewmodel.CommonVM
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class M000SplashFrg : BaseFragment<M000SplashFrgBinding, CommonVM>() {
     companion object {
         val TAG: String = M000SplashFrg::class.java.name

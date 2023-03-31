@@ -7,7 +7,9 @@ import com.techja.themoviekotlin.api.res.model.DetailMovie
 import com.techja.themoviekotlin.api.res.model.MovieRes
 import com.techja.themoviekotlin.databinding.M003DetailMovieFrgBinding
 import com.techja.themoviekotlin.viewmodel.M003DetailMovieVM
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class M003DetailMovieFrg : BaseFragment<M003DetailMovieFrgBinding, M003DetailMovieVM>() {
     companion object {
         val TAG: String = M003DetailMovieFrg::class.java.name
@@ -54,7 +56,7 @@ class M003DetailMovieFrg : BaseFragment<M003DetailMovieFrgBinding, M003DetailMov
         val date: List<String> = res.releaseDate!!.split("-")
         val vnDate = date[2] + "/" + date[1] + "/" + date[0]
         binding.tvDate.text = String.format("%s(VN)", vnDate)
-        binding.tvYear.text = String.format("(%s)", date[0])
+        binding.tvYear.text = String.format("(%s)",  date[0])
 
         val hour = res.runTime!! / 60
         val minute = res.runTime!! - hour * 60

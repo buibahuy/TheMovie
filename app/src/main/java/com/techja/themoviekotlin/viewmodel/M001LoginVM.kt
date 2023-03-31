@@ -1,11 +1,13 @@
 package com.techja.themoviekotlin.viewmodel
 
 import android.util.Log
+import com.techja.themoviekotlin.api.APIHelper
 import com.techja.themoviekotlin.api.req.AccountReq
 import com.techja.themoviekotlin.api.req.RequestTokenReq
 import com.techja.themoviekotlin.api.res.model.AuthenRes
+import javax.inject.Inject
 
-open class M001LoginVM : BaseViewModel() {
+open class M001LoginVM @Inject constructor(private val apiHelper: APIHelper) : BaseViewModel() {
     companion object {
         const val KEY_API_CREATE_SESSION_ID = "KEY_API_CREATE_SESSION_ID"
         val TAG: String = M001LoginVM::class.java.name
@@ -19,18 +21,18 @@ open class M001LoginVM : BaseViewModel() {
     fun getAuthen(userName: String, password: String) {
         this.userName = userName
         this.password = password
-        getAPI().getAuthen().enqueue(initHandleResponse(KEY_API_AUTHEN))
+        apiHelper.getAuthen().enqueue(initHandleResponse(KEY_API_AUTHEN))
     }
 
     private fun createSession(requestToken: String) {
-        getAPI().createSession(AccountReq(userName!!, password!!, requestToken))
+        apiHelper.createSession(AccountReq(userName!!, password!!, requestToken))
             .enqueue(
                 initHandleResponse(KEY_API_CREATE_SESSION)
             )
     }
 
     private fun createSessionId(requestToken: String) {
-        getAPI().createSessionID(RequestTokenReq(requestToken)).enqueue(
+        apiHelper.createSessionID(RequestTokenReq(requestToken)).enqueue(
             initHandleResponse(
                 KEY_API_CREATE_SESSION_ID
             )

@@ -1,9 +1,12 @@
 package com.techja.themoviekotlin.viewmodel
 
+import com.techja.themoviekotlin.api.APIHelper
 import com.techja.themoviekotlin.api.res.model.MovieRes
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class M002ListMovieVM : BaseViewModel() {
-
+@HiltViewModel
+class M002ListMovieVM  @Inject constructor(private val apiHelper : APIHelper): BaseViewModel() {
 
     companion object {
         val TAG: String = M002ListMovieVM::class.java.name
@@ -15,7 +18,7 @@ class M002ListMovieVM : BaseViewModel() {
 
     fun getListMovie() {
         page++
-        getAPI().getListMovie(page).enqueue(initHandleResponse(KEY_GET_LIST_MOVIE))
+        apiHelper.getListMovie(page).enqueue(initHandleResponse(KEY_GET_LIST_MOVIE))
     }
 
     fun addToResultList(results: List<MovieRes.Result>) {
