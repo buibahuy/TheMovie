@@ -8,6 +8,8 @@ import com.techja.themoviekotlin.databinding.M002ListMovieFrgBinding
 import com.techja.themoviekotlin.view.adapter.MovieAdapter
 import com.techja.themoviekotlin.viewmodel.M002ListMovieVM
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class M002ListMovieFrg : BaseFragment<M002ListMovieFrgBinding, M002ListMovieVM>() {
@@ -19,27 +21,27 @@ class M002ListMovieFrg : BaseFragment<M002ListMovieFrgBinding, M002ListMovieVM>(
 
     override fun initViews() {
         viewModel.getListMovie()
+        handleListMovie()
         binding.rvListMovie.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
                     viewModel.getListMovie()
+                    handleListMovie()
                 }
             }
         })
     }
 
 
-    override fun apiSuccess(key: String, data: Any?) {
-        val movieRes: MovieRes = data as MovieRes
-
-        viewModel.addToResultList(movieRes.results!!)
-        mAdapter = MovieAdapter(viewModel.getResultList(), mContext)
+     fun handleListMovie() {
+        mAdapter = MovieAdapter(viewModel.resultList.value ?: listOf(), mContext)
         binding.rvListMovie.adapter = mAdapter
         mAdapter.getItemResult().observe(this) {
             handleItemResult(it)
         }
-        mAdapter.updateListResult(viewModel.getResultList())
-
+         viewModel.resultList.observe(this){
+             mAdapter.updateListResult(it)
+         }
     }
 
     private fun handleItemResult(result: MovieRes.Result) {

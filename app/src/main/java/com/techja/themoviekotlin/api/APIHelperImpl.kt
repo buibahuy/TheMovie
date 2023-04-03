@@ -7,6 +7,7 @@ import com.techja.themoviekotlin.api.res.model.DetailMovie
 import com.techja.themoviekotlin.api.res.model.MovieRes
 import com.techja.themoviekotlin.api.res.model.SessionRes
 import retrofit2.Call
+import retrofit2.Response
 import javax.inject.Inject
 
 class APIHelperImpl @Inject constructor(private  val apiService: APIService) : APIHelper {
@@ -19,7 +20,7 @@ class APIHelperImpl @Inject constructor(private  val apiService: APIService) : A
     override fun createSessionID(tokenReq: RequestTokenReq): Call<SessionRes?> =
         apiService.createSessionID(tokenReq = tokenReq)
 
-    override fun getListMovie(page: Int): Call<MovieRes> = apiService.getListMovie(page = page)
+    override suspend fun getListMovie(page: Int): Response<MovieRes> = apiService.getListMovie(page = page)
 
-    override fun getDetailMovie(id: Int): Call<DetailMovie> = apiService.getDetailMovie(id = id)
+    override suspend fun getDetailMovie(id: Int): Response<DetailMovie> = apiService.getDetailMovie(id = id)
 }

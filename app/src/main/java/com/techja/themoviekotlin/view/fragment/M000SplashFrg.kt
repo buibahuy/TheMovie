@@ -9,6 +9,7 @@ import com.techja.themoviekotlin.databinding.M000SplashFrgBinding
 import com.techja.themoviekotlin.view.fragment.M001LoginFrg.Companion.KEY_SESSION_ID
 import com.techja.themoviekotlin.viewmodel.CommonVM
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class M000SplashFrg : BaseFragment<M000SplashFrgBinding, CommonVM>() {
@@ -20,7 +21,8 @@ class M000SplashFrg : BaseFragment<M000SplashFrgBinding, CommonVM>() {
         Log.i(TAG, "initViews...")
         Handler().postDelayed({
             val sessionID: String = CommonUtils.getInstance().getPref(KEY_SESSION_ID).toString()
-            if (sessionID == null) {
+            Timber.tag("M000SplashFrg").d("---${sessionID}")
+            if (sessionID.isBlank()) {
                 gotoMainScreen()
             } else
                 callBack.showFragment(M002ListMovieFrg.TAG, null, false)

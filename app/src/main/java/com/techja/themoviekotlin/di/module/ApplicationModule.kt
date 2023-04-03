@@ -16,7 +16,7 @@ class RepositoryModule {
 
     @Provides
     @ViewModelScoped
-    fun provideAPIService(retrofit: Retrofit) = retrofit.create(APIService::class.java)
+    fun provideAPIService(retrofit: Retrofit): APIService = retrofit.create(APIService::class.java)
 
     @Provides
     @ViewModelScoped

@@ -7,17 +7,19 @@ import com.techja.themoviekotlin.api.res.model.DetailMovie
 import com.techja.themoviekotlin.api.res.model.MovieRes
 import com.techja.themoviekotlin.api.res.model.SessionRes
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
-
+import kotlinx.coroutines.flow.Flow
 interface APIHelper {
 
     fun getAuthen(): Call<AuthenRes?>
 
-    fun createSession(@Body acc: AccountReq): Call<AuthenRes?>
+    fun createSession( acc: AccountReq): Call<AuthenRes?>
 
-    fun createSessionID(@Body tokenReq: RequestTokenReq): Call<SessionRes?>
+    fun createSessionID( tokenReq: RequestTokenReq): Call<SessionRes?>
 
-    fun getListMovie(@Query("page") page: Int): Call<MovieRes>
+    suspend fun getListMovie(page: Int): Response<MovieRes>
 
-    fun getDetailMovie(@Path("id") id: Int): Call<DetailMovie>
+    suspend fun getDetailMovie(id: Int): Response<DetailMovie>
+
 }

@@ -1,12 +1,11 @@
 package com.techja.themoviekotlin.api
 
 import com.techja.themoviekotlin.api.req.AccountReq
+import com.techja.themoviekotlin.api.req.RequestListReq
 import com.techja.themoviekotlin.api.req.RequestTokenReq
-import com.techja.themoviekotlin.api.res.model.AuthenRes
-import com.techja.themoviekotlin.api.res.model.DetailMovie
-import com.techja.themoviekotlin.api.res.model.MovieRes
-import com.techja.themoviekotlin.api.res.model.SessionRes
+import com.techja.themoviekotlin.api.res.model.*
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 interface APIService {
@@ -28,11 +27,14 @@ interface APIService {
 
     @GET("discover/movie?api_key=$API_KEY")
     @Headers("Content-Type: application/json")
-    fun getListMovie(@Query("page") page: Int): Call<MovieRes>
+    suspend fun getListMovie(@Query("page") page: Int): Response<MovieRes>
 
     @GET("movie/{id}?api_key=$API_KEY")
     @Headers("Content-Type: application/json")
-    fun getDetailMovie(@Path("id") id: Int): Call<DetailMovie>
+    suspend fun getDetailMovie(@Path("id") id: Int): Response<DetailMovie>
 
+    @GET("list?api_key=$API_KEY&session_id={session_id}")
+    @Headers("Content-Type: application/json;charset=utf-8")
+    suspend fun createMovieList(@Path("session_id") sessionId:String,@Body listReq: RequestListReq): Response<ListsRes>
 
 }
