@@ -7,7 +7,9 @@ import com.techja.themoviekotlin.api.res.model.MovieRes
 import com.techja.themoviekotlin.databinding.M002ListMovieFrgBinding
 import com.techja.themoviekotlin.view.adapter.MovieAdapter
 import com.techja.themoviekotlin.viewmodel.M002ListMovieVM
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class M002ListMovieFrg : BaseFragment<M002ListMovieFrgBinding, M002ListMovieVM>() {
     private lateinit var mAdapter: MovieAdapter
 

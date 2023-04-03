@@ -8,7 +8,9 @@ import com.techja.themoviekotlin.R
 import com.techja.themoviekotlin.api.res.model.SessionRes
 import com.techja.themoviekotlin.databinding.M001LoginFrgBinding
 import com.techja.themoviekotlin.viewmodel.M001LoginVM
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class M001LoginFrg : BaseFragment<M001LoginFrgBinding, M001LoginVM>() {
     companion object {
         val TAG: String = M001LoginFrg::class.java.name
