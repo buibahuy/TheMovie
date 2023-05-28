@@ -9,10 +9,13 @@ import android.widget.ImageView
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.techja.themoviekotlin.R
 import com.techja.themoviekotlin.api.res.model.MovieRes
+import java.util.Collections
+import java.util.stream.Collectors
 
 class MovieAdapter(private var listResult: List<MovieRes.Result>, private val context: Context) :
     RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
